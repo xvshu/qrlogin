@@ -11,40 +11,40 @@ redis节点存储数据格式为hash结构：
   失效时间：2天
 
 ## 概要流程
-<div align=center>
-<img  src="https://github.com/xvshu/qrlogin/blob/master/doc/img/%E8%AE%BE%E8%AE%A11.png"></div>
+
+<img  src="https://github.com/xvshu/qrlogin/blob/master/doc/img/%E8%AE%BE%E8%AE%A11.png">
 
 # 主要页面
 ## 生成二维码
 PC：
-<div align=center>
-<img width="200px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/main-1.jpg"></div>
+
+<img width="400px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/main-1.jpg">
 
 APP：
-<div align=center>
-<img width="200px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/ap-main.jpg"></div>
+
+<img width="400px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/ap-main.jpg">
 
 ## 模拟扫码登录
 APP：
-<div align=center>
-<img width="200px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/aplogin.jpg"></div>
+
+<img width="400px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/aplogin.jpg">
 
 ## 登录成功
 PC：
-<div align=center>
-<img width="200px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/success1.jpg"></div>
+
+<img width="400px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/success1.jpg">
 
 APP：
-<div align=center>
-<img width="200px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/ap-success.jpg"></div>
+
+<img width="400px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/ap-success.jpg">
 
 ## 说明
 二维码失效时间：30s
 二维码登录页面与后台校验数据间隔时间3s
 失效页面：
 PC：
-<div align=center>
-<img width="200px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/ap-loss.jpg"></div>
+
+<img width="200px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/ap-loss.jpg">
 
 # 总结
 demo只完成了一个简单的二维码登录，此处有很多使用的还是测试数据，在生产环境对接生产数据，并做网关等安全处理之后就 可以使用其完成二维码登录了，因为全程使用的redis，性能上一般会非常不错。
