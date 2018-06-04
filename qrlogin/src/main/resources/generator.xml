@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- base package -->
+	<entry key="basepackage">com.el.qr.login</entry>
+
+	<!-- project name -->
+	<entry key="project_name">qrlogin</entry>
+
+	<!-- tableRemovePrefixes,eg: t_,v_ -->
+	<entry key="tableRemovePrefixes">el_</entry>
+
+	<!-- tables -->
+	<entry key="tableParameter">*</entry>
+
+	<!-- Mysql -->
+	<entry key="jdbc_url">jdbc:mysql://192.168.2.16:3316/test?useUnicode=true&amp;characterEncoding=UTF-8</entry>
+	<entry key="jdbc_driver">com.mysql.jdbc.Driver</entry>
+	<entry key="jdbc_username">dba</entry>
+	<entry key="jdbc_password">dba123</entry>
+</properties>

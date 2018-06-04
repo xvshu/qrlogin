@@ -1,0 +1,71 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/cache
+   http://www.springframework.org/schema/cache/spring-cache.xsd" default-autowire="byName">
+
+
+	<!-- 连接池配置 -->
+	<bean id="redisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<!-- 最大连接数 默认8个-->
+		<property name="maxTotal" value="500"></property>
+		<!-- 最大空闲连接数 默认8个 -->
+		<property name="maxIdle" value="5"></property>
+		<!-- 获取连接时的最大等待毫秒数 小于零:阻塞不确定的时间,  默认-1-->
+		<property name="maxWaitMillis" value="10000"></property>
+		<!-- 逐出连接的最小空闲时间 默认1800000毫秒(30分钟)-->
+		<property name="minEvictableIdleTimeMillis" value="300000"></property>
+		<!-- 每次逐出检查时 逐出的最大数目 默认3 -->
+		<property name="numTestsPerEvictionRun" value="3"></property>
+		<!-- 每次逐出检查时 逐出的最大数目 默认3 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000"></property>
+	</bean>
+
+	<!-- ########################## codis配置 ########################## -->
+
+	<!-- codis链接工厂 -->
+	<bean id="codisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		  destroy-method="destroy">
+		<!-- 使用jedis的连接池 -->
+		<property name="usePool" value="true"></property>
+		<property name="poolConfig" ref="redisPoolConfig"></property>
+		<!-- 链接地址 -->
+		<property name="hostName" value="${codis.host}"></property>
+		<!-- 链接端口 -->
+		<property name="port" value="${codis.port}"></property>
+		<!-- 链接密码 -->
+		<property name="password" value="${codis.pass}"></property>
+		<!-- 超时时间 -->
+		<property name="timeout" value="${codis.timeout}"></property>
+		<!-- 超时分区 -->
+		<property name="database" value="${codis.default.db}"></property>
+	</bean>
+
+	<!-- redis模板 -->
+	<bean id="codisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+		<!-- 使用jedis工厂 -->
+		<property name="connectionFactory" ref="codisConnectionFactory"></property>
+		<!-- key序列化方式 -->
+		<property name="keySerializer">
+			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+		<property name="hashKeySerializer">
+			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+		<!-- value序列化方式 -->
+		<property name="valueSerializer">
+			<bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+		</property>
+		<property name="hashValueSerializer">
+			<bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+		</property>
+	</bean>
+
+	<!-- 启动注释cache -->
+	<cache:annotation-driven cache-manager="cacheManager" />
+	<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+		<constructor-arg ref="codisTemplate"></constructor-arg>
+	</bean>
+</beans>

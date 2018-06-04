@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!-- 声明变量 -->
+    <property name="log.base" value="/Data/logs/qrlogin"/>
+    <property name="log.subdir.ulog" value="${log.base}/apilogs"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%C|%M|%p|%X{teid}|%X{rtid}|%X{tnid}|%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{20}.%method:%line - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <!-- 主日志. 按照每天生成日志文件 -->
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Encoding>UTF-8</Encoding>
+        <file>${log.subdir.ulog}/qrlogin.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.subdir.ulog}/qrlogin.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%C|%M|%p|%X{teid}|%X{rtid}|%X{tnid}|%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{20}.%method:%line - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <!-- DAO 开始 -->
+    <appender name="DAO"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Encoding>UTF-8</Encoding>
+        <file>${log.subdir.ulog}/qrlogin_dao.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.subdir.ulog}/qrlogin_dao.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%C|%M|%p|%X{teid}|%X{rtid}|%X{tnid}|%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{20}.%method:%line - %msg%n</pattern>
+        </layout>
+    </appender>
+    <!-- DAO 结束 -->
+
+    <!-- SERVICE 开始 -->
+    <appender name="SERVICE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Encoding>UTF-8</Encoding>
+        <file>${log.subdir.ulog}/qrlogin_service.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.subdir.ulog}/qrlogin_service.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%C|%M|%p|%X{teid}|%X{rtid}|%X{tnid}|%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{20}.%method:%line - %msg%n</pattern>
+        </layout>
+    </appender>
+    <!-- SERVICE 结束 -->
+
+    <!-- MANAGER 开始 -->
+    <appender name="MANAGER"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Encoding>UTF-8</Encoding>
+        <file>${log.subdir.ulog}/qrlogin_manager.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.subdir.ulog}/qrlogin_manager.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%C|%M|%p|%X{teid}|%X{rtid}|%X{tnid}|%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{20}.%method:%line - %msg%n</pattern>
+        </layout>
+    </appender>
+    <!-- SERVICE 结束 -->
+
+    <logger name="com.el.qr.login.dao" level="info" additivity="false">
+        <appender-ref ref="DAO"/>
+    </logger>
+
+    <logger name="com.el.qr.login.service" level="info" additivity="false">
+        <appender-ref ref="SERVICE"/>
+    </logger>
+
+    <logger name="com.el.qr.login.facade" level="info" additivity="false">
+        <appender-ref ref="MANAGER"/>
+    </logger>
+
+    <!--  除了特别指定的, 剩余的都都记录到主日志文件中.  -->
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
