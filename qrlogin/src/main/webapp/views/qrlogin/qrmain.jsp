@@ -6,7 +6,7 @@
 
 <html lang="en">
 <head>
-    <title>翼龙贷扫码登录</title>
+    <title>扫码登录</title>
     <style>
 
     </style>

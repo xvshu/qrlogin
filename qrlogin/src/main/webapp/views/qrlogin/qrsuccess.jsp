@@ -5,7 +5,7 @@
 
 <html lang="en">
 <head>
-    <title>翼龙贷APP授权</title>
+    <title>APP授权</title>
     <script type="text/javascript" src="../../common/js/jquery-3.3.1.min.js" ></script>
 
     <script type="text/javascript" >
@@ -37,7 +37,7 @@
 
     <div style="width: 100%;height: 30%;background-color:red;text-align: center">
         <div style="width: 100%;height: 25%;background-color:red;text-align: center"></div>
-        <h1 style="font-size: 35px;color: white;margin:auto;">翼龙贷模拟APP授权</h1>
+        <h1 style="font-size: 35px;color: white;margin:auto;">模拟APP授权</h1>
         <p></p>
         <div style="color:white;text-align: center;">测试用户:xvshu_test_001</div>
     </div>
