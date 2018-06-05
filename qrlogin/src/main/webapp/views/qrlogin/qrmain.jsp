@@ -19,7 +19,7 @@
             <div style="width: 100%;height: 25%;background-color:red;text-align: center"></div>
             <h1 style="font-size: 35px;color: white;margin:auto;">恭喜你，登录成功！</h1>
             <p></p>
-            <div style="color:white;text-align: center;">用户ID:${code_mark}</div>
+            <div style="color:white;text-align: center;">用户ID:${userId}</div>
         </div>
 
         <div style="width:100%;height:78%;text-align: center;background-color:white;text-align: center">

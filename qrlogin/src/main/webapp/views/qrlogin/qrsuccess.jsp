@@ -15,8 +15,9 @@
         function qr_login(){
             $.get("/qr/login/success?code_mark="+code_mark+"&userID="+userid,function(data,status){
                 if(status=="success"&&data=="success"){
-                    alert("用户[xvshu_test_001]授权登录成功！");
-                    window.location.href="/qr/login/main";
+                    window.location.href="/qr/login/main?userId=xvshu_test_001";
+                }else{
+                    alert("授权失败，请重试！");
                 }
             });
         }
@@ -36,7 +37,7 @@
 
     <div style="width: 100%;height: 30%;background-color:red;text-align: center">
         <div style="width: 100%;height: 25%;background-color:red;text-align: center"></div>
-        <h1 style="font-size: 35px;color: white;margin:auto;">模拟APP授权</h1>
+        <h1 style="font-size: 35px;color: white;margin:auto;">翼龙贷模拟APP授权</h1>
         <p></p>
         <div style="color:white;text-align: center;">测试用户:xvshu_test_001</div>
     </div>
