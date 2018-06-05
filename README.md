@@ -44,7 +44,7 @@ APP：
 失效页面：
 PC：
 
-<img width="200px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/ap-loss.jpg">
+<img width="400px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/ap-loss.jpg">
 
 # 总结
 demo只完成了一个简单的二维码登录，此处有很多使用的还是测试数据，在生产环境对接生产数据，并做网关等安全处理之后就 可以使用其完成二维码登录了，因为全程使用的redis，性能上一般会非常不错。
