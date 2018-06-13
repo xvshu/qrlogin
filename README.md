@@ -34,9 +34,7 @@ PC：
 
 <img width="400px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/success1.jpg">
 
-APP：
 
-<img width="400px" src="https://github.com/xvshu/qrlogin/blob/master/doc/img/ap-success.jpg">
 
 ## 说明
 二维码失效时间：30s
