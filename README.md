@@ -14,6 +14,9 @@ redis节点存储数据格式为hash结构：
 
 <img  src="https://github.com/xvshu/qrlogin/blob/master/doc/img/%E8%AE%BE%E8%AE%A11.png">
 
+# urls
+  模拟登录：yourhost:port/qr/login
+
 # 主要页面
 ## 生成二维码
 PC：
