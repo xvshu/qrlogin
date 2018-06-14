@@ -17,7 +17,7 @@
                 if(status=="success"&&data=="success"){
                     window.location.href="/qr/login/main?userId=xvshu_test_001";
                 }else{
-                    alert("授权失败，请重试！");
+                    alert("授权失败，请刷新页面重试！");
                 }
             });
         }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>com.el.parent</groupId>
+		<artifactId>el-pom</artifactId>
+		<version>1.0.1</version>
+	</parent>
+    <modelVersion>4.0.0</modelVersion>
+	<groupId>com.el.qr.login</groupId>
+    <artifactId>qrlogin-api</artifactId>
+	<version>1.0-SNAPSHOT</version>
+    <name>qrlogin-api</name>
+	<!-- jar包依赖 begin-->
+	<dependencies>
+		<dependency>
+			<groupId>com.eloancn.common</groupId>
+			<artifactId>common-api</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>swagger-annotations</artifactId>
+					<groupId>com.wordnik</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jboss-logging</artifactId>
+					<groupId>org.jboss.logging</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hibernate-validator</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-lang3</artifactId>
+					<groupId>org.apache.commons</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+	</dependencies>
+	<!-- jar包依赖 end-->
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+				<source>1.7</source>
+				<target>1.7</target>
+				<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.rapid.generator</groupId>
+				<artifactId>gen-api</artifactId>
+				<version>3.9.2</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>

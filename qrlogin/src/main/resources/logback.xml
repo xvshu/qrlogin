@@ -73,17 +73,13 @@
     </appender>
     <!-- SERVICE 结束 -->
 
-    <logger name="com.el.qr.login.dao" level="info" additivity="false">
-        <appender-ref ref="DAO"/>
-    </logger>
 
-    <logger name="com.el.qr.login.service" level="info" additivity="false">
+
+    <logger name="com.el.qr.login" level="info" additivity="false">
+        <appender-ref ref="STDOUT"/>
         <appender-ref ref="SERVICE"/>
     </logger>
 
-    <logger name="com.el.qr.login.facade" level="info" additivity="false">
-        <appender-ref ref="MANAGER"/>
-    </logger>
 
     <!--  除了特别指定的, 剩余的都都记录到主日志文件中.  -->
     <root level="info">

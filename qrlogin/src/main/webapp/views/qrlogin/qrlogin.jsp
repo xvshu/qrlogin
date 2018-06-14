@@ -6,7 +6,7 @@
 
 <html lang="en">
 <head>
-    <title>扫码登录</title>
+    <title>扫码登录平台</title>
 
     <script type="text/javascript" src="../../common/js/jquery-3.3.1.min.js" ></script>
     <script type="text/javascript" src="../../common/js/utf.js" ></script>
@@ -15,19 +15,19 @@
 
     <script type="text/javascript" >
 
-        var int=self.setInterval("check_qrlogin()",2000);
-
+        var int=self.setInterval("check_qrlogin()",1000);
+        var lost_time=self.setInterval("lost_time()",1000);
         $(function() {
             var code_mark='${code_mark}';
             $("#code_mark").val(code_mark);
             create_qrcode();
             img_logo();
-            setTimeout(function(){alert("二维码失效,请刷新页面重新扫码！");clean_qrcode()},30000);
+            setTimeout(function(){clean_qrcode()},180000);
 
         });
 
         function check_qrlogin(){
-            var code_mark='${code_mark}';
+            var code_mark=$("#code_mark").val();
             $.get("/qr/login/check?code_mark="+code_mark,function(data,status){
                 if(status=="success"&&data!='nouser'){
                     int=window.clearInterval(int);
@@ -67,12 +67,40 @@
             }
         }
 
+        function qr_refresh(){
+
+            $.get("/qr/login/refreshQRKey",function(data,status){
+                if(status=="success"&&data!=''){
+                    var code_mark=data;
+                    $("#code_mark").val(code_mark);
+                    create_qrcode();
+                    img_logo();
+                    setTimeout(function(){clean_qrcode()},180000);
+                    int=self.setInterval("check_qrlogin()",1000);
+                }
+            });
+        }
+
         function clean_qrcode(){
-            $("#code").html("<h1 style='color:red'>二维码失效,请刷新页面重新扫码！</h1>");
+            $("#code").html("<h1 style='color:red'>二维码已失效</h1><pr></pr><pr></pr><pr></pr><pr></pr>" +
+                "<button  style=\"margin:auto;\"  class=\"dow\" onclick=\"qr_refresh()\">刷&nbsp;新&nbsp;二&nbsp;维&nbsp;码</button>");
             int=window.clearInterval(int);
         }
 
+        var lostCount=180;
+        function lost_time(){
+            if(lostCount>=0){
+                $()
+            }
+        }
     </script>
+
+    <style>
+        .dow{display:block;width:302px;height:62px; line-height:42px; text-align:center; font-weight:bold; font-size:32px; background:cornflowerblue;color:white; text-decoration:none; border: 0px solid cornflowerblue; cursor:pointer}
+        .dow:hover{background:cornflowerblue;}
+        .dow:active{background:cornflowerblue;}
+
+    </style>
 
 
 </head>
@@ -83,7 +111,7 @@
         <div style="width: 100%;height: 25%;background-color:red;text-align: center"></div>
         <h1 style="font-size: 35px;color: white;margin:auto;">扫码授权平台</h1>
         <p></p>
-        <div style="color:white;text-align: center;">二维码30秒后失效，请尽快扫码登录</div>
+        <div style="color:white;text-align: center;">二维码180秒后失效，请尽快扫码登录</div>
     </div>
 
     <div style="width:100%;height:78%;text-align: center;background-color:white;text-align: center">
@@ -95,6 +123,10 @@
         <p></p><p></p><p></p>
         <div style="width:100%;text-align: center">
             标识码：<input type="text" style="width:200px" id="code_mark" />
+        </div>
+        <p></p><p></p><p></p>
+        <div style="width:100%;text-align: center">
+            进行时间：<div id="lost_time"></div>
         </div>
     </div>
 

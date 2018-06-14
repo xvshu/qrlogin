@@ -11,5 +11,8 @@
 
 	<modules>
 		<module>qrlogin</module>
+		<module>qrlogin-api</module>
 	</modules>
+	
+	
 </project>

@@ -202,6 +202,22 @@
       <artifactId>rapid-generator</artifactId>
     </dependency>
 
+    <!--限流 -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>18.0</version>
+    </dependency>
+    <!--限流 end-->
+
+    <!--api-->
+    <dependency>
+      <groupId>com.el.qr.login</groupId>
+      <artifactId>qrlogin-api</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <!--api-->
+
   </dependencies>
   <!-- jar包依赖 end-->
 

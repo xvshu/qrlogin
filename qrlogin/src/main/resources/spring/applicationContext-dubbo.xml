@@ -17,5 +17,7 @@
 	<dubbo:protocol name="dubbo" port="20880" />
 
 	<!-- 声明需要暴露的服务接口-->
+	<dubbo:service interface="com.el.qr.login.api.QRLoginService" ref="qRLoginServiceImpl" group="el-qrlogin-soa" version="1.1.0"
+				   timeout="60000" protocol="dubbo" registry="elZookeeper" />
 
 </beans>

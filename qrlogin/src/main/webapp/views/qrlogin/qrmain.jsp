@@ -6,7 +6,7 @@
 
 <html lang="en">
 <head>
-    <title>扫码登录</title>
+    <title>扫码登录平台</title>
     <style>
 
     </style>
